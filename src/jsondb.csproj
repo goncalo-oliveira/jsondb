@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>JsonDb</RootNamespace>
+    <AssemblyName>jsondb</AssemblyName>
+    <PackageId>JsonDb</PackageId>
+    <Version>0.1</Version>
+    <Authors>Goncalo Oliveira</Authors>
+    <Description>Runtime types</Description>
+    <RepositoryUrl>https://github.com/goncalo-oliveira/jsondb</RepositoryUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>
