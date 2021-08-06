@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonDb
 {
-    internal class InMemoryJsonCollection<T> : IJsonCollection<T>
+    public class InMemoryJsonCollection<T> : IJsonCollection<T>
     {
         private readonly List<T> collection;
 

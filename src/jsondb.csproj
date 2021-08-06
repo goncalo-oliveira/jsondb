@@ -7,7 +7,7 @@
     <PackageId>JsonDb</PackageId>
     <Version>0.1</Version>
     <Authors>Goncalo Oliveira</Authors>
-    <Description>Runtime types</Description>
+    <Description>A small JSON database</Description>
     <RepositoryUrl>https://github.com/goncalo-oliveira/jsondb</RepositoryUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
