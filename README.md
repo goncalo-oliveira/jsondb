@@ -2,6 +2,8 @@
 
 A small JSON database for small projects.
 
+> WARNING: This is an unfinished project. Use at your own risk.
+
 ## Getting Started
 
 Add the NuGet package to your project
