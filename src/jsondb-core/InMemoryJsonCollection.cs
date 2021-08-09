@@ -20,6 +20,11 @@ namespace JsonDb
             collection = new List<T>( capacity );
         }
 
+        public InMemoryJsonCollection( IEnumerable<T> items )
+        {
+            collection = new List<T>( items );
+        }
+
         public void Add( T item )
         {
             collection.Add( item );

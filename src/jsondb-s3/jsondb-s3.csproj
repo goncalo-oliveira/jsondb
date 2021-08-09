@@ -5,7 +5,7 @@
     <RootNamespace>JsonDb.S3</RootNamespace>
     <AssemblyName>jsondb.s3</AssemblyName>
     <PackageId>JsonDb.S3</PackageId>
-    <Version>0.2</Version>
+    <Version>0.3</Version>
     <Authors>Goncalo Oliveira</Authors>
     <Description>A small JSON database for S3</Description>
     <RepositoryUrl>https://github.com/goncalo-oliveira/jsondb-s3</RepositoryUrl>
@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="AWSSDK.S3" Version="3.7.1.21" />
-    <PackageReference Include="JsonDb.Abstractions" Version="0.2.0" />
+    <PackageReference Include="JsonDb.Core" Version="0.3.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
   </ItemGroup>
 

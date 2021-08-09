@@ -2,14 +2,12 @@
 
 A small JSON database for small projects.
 
-> WARNING: This is an unfinished project. Use at your own risk.
-
 ## Getting Started
 
-Add the NuGet package to your project
+Add the appropriate NuGet package to your project. See [alternatives to local storage](#alternatives-to-local-storage) for more options.
 
 ```bash
-dotnet add package JsonDb
+$ dotnet add package JsonDb
 ```
 
 To use the JSON database, you first need to configure your dependency injection container with the desired implementation. The bellow is an example using `LocalStorage`.
@@ -23,7 +21,7 @@ services.AddLocalJsonDb( options =>
 } );
 ```
 
-This gives us access to a `IJsonDbFactory`, injected wherever we need it. Here's an example to retrieve users from a `users.json` file.
+This gives us access to an `IJsonDbFactory`, injected wherever we need it. Here's an example to retrieve users from a `users.json` file.
 
 ```csharp
 public class MyService
@@ -44,7 +42,7 @@ public class MyService
 }
 ```
 
-The collections implement an `IEnumerable<T>`, which means we can also use LINQ extensions to query our collection.
+The collections implement an `IEnumerable<T>`, which means we can iterate directly or use LINQ extensions to query our collection.
 
 ```csharp
 public class User
@@ -82,6 +80,18 @@ When we add or remove items to/from our collection, these changes aren't automat
 await users.WriteAsync();
 ```
 
+## Ad-hoc Usage
+
+If you just need a "readonly" collection (no physical write support), you can also use the `JsonDbCollection` helpers to directly read JSON content into a collection.
+
+```csharp
+// reading directly from a JSON file
+var usersFile = await JsonDbCollection.ReadFileAsync<User>( "path/users.json" );
+
+// reading directly from an URI
+var stuffUrl = await JsonDbCollection.ReadUrlAsync<User>( "https://gist.githubusercontent.com/goncalo-oliveira/2e7386336652721c06943e9099e4c622/raw/ee21a456573cfff79ebc01cb1b8daa1f9294b364/jsondb-users.json" );
+```
+
 ## Encryption
 
 Currently, there's no encryption over the json data. There are plans to implement this.
@@ -104,7 +114,7 @@ services.AddS3JsonDb( options =>
 } );
 ```
 
-If you'd like to write your own, install the package `JsonDb.Abstractions` and implement the following interfaces:
+If you'd like to write your own, install the package `JsonDb.Core` and implement the following interfaces:
 
 - IJsonDbFactory
 - IJsonDb

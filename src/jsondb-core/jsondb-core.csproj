@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>JsonDb</RootNamespace>
-    <AssemblyName>jsondb.abstractions</AssemblyName>
-    <PackageId>JsonDb.Abstractions</PackageId>
-    <Version>0.2</Version>
+    <AssemblyName>jsondb.core</AssemblyName>
+    <PackageId>JsonDb.Core</PackageId>
+    <Version>0.3</Version>
     <Authors>Goncalo Oliveira</Authors>
     <Description>A small JSON database</Description>
     <RepositoryUrl>https://github.com/goncalo-oliveira/jsondb</RepositoryUrl>
