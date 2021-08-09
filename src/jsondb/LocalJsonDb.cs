@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace JsonDb.Files
+namespace JsonDb.Local
 {
     internal class LocalJsonDb : IJsonDb
     {

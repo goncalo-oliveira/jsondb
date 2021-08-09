@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace JsonDb.Files
+namespace JsonDb.Local
 {
     internal class LocalJsonCollection<T> : InMemoryJsonCollection<T>
     {

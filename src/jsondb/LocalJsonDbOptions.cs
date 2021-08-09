@@ -1,6 +1,6 @@
 using System;
 
-namespace JsonDb.Files
+namespace JsonDb.Local
 {
     public class LocalJsonDbOptions : JsonDbOptions
     {

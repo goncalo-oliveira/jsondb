@@ -1,6 +1,6 @@
 using System;
 using JsonDb;
-using JsonDb.Files;
+using JsonDb.Local;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

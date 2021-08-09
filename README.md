@@ -84,14 +84,30 @@ await users.WriteAsync();
 
 ## Encryption
 
-Currently, there's no encryption over the json data. There are plans to implement.
+Currently, there's no encryption over the json data. There are plans to implement this.
 
 ## Alternatives to local storage
 
-There are plans to implement an S3 compatible `IJsonDb`.
+There is also support for AWS S3 compatible storage. Install the package `JsonDb.S3` instead and add the following to the container setup
 
-If you'd like to write your own, you'll need to implement the following
+```csharp
+IServiceCollection services = ...
+
+// example with DigitalOcean's S3 compatible Spaces
+services.AddS3JsonDb( options =>
+{
+    options.ServiceUrl = "https://ams3.digitaloceanspaces.com/";
+    options.BucketName = "digitalocean-space-name";
+    options.AccessKey = "digitalocean-access-key";
+    options.SecretKey = "digitalocean-secret-key";
+    options.DbPath = "jsondb";
+} );
+```
+
+If you'd like to write your own, install the package `JsonDb.Abstractions` and implement the following interfaces:
 
 - IJsonDbFactory
 - IJsonDb
 - IJsonCollection<T>
+
+You can derive your collection from `InMemoryJsonCollection<T>` and just implement the `WriteAsync` method.

@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Extensions.Options;
 
-namespace JsonDb.Files
+namespace JsonDb.Local
 {
     internal class LocalJsonDbFactory : IJsonDbFactory
     {
