@@ -94,7 +94,19 @@ var stuffUrl = await JsonDbCollection.ReadUrlAsync<User>( "https://gist.githubus
 
 ## Encryption
 
-Currently, there's no encryption over the json data. There are plans to implement this.
+Encryption of the data at rest is possible by using a `IJsonCollectionAdapter` instance. This can be passed through in the options when setting up the dependency injection container.
+
+```csharp
+services.AddLocalJsonDb( options =>
+{
+    options.DbPath = "db";
+    options.CollectionAdapter = new EncryptedJsonCollectionAdapter( encryptionKey );
+} );
+```
+
+The above example uses an adapter that encrypts (and decrypts) data using an AES algorithm with a 256 bit encryption key. If you need a different adapter, you can implement `IJsonCollectionAdapter` yourself.
+
+> Both the local storage and the S3 compatible storage implementations can use adapters. Ad-hoc `JsonDbCollection` helpers don't support this feature.
 
 ## Alternatives to local storage
 

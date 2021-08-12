@@ -14,7 +14,7 @@ namespace JsonDb.Local
 
         public IJsonDb GetJsonDb()
         {
-            return new LocalJsonDb( options.DbPath, options.JsonSerializerOptions );
+            return new LocalJsonDb( options.DbPath, options.CollectionAdapter, options.JsonSerializerOptions );
         }
     }
 }

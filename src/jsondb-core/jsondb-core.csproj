@@ -5,7 +5,7 @@
     <RootNamespace>JsonDb</RootNamespace>
     <AssemblyName>jsondb.core</AssemblyName>
     <PackageId>JsonDb.Core</PackageId>
-    <Version>0.3</Version>
+    <Version>0.4</Version>
     <Authors>Goncalo Oliveira</Authors>
     <Description>A small JSON database</Description>
     <RepositoryUrl>https://github.com/goncalo-oliveira/jsondb</RepositoryUrl>

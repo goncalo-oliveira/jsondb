@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json;
+using JsonDb.Adapters;
 
 namespace JsonDb
 {
@@ -15,5 +16,7 @@ namespace JsonDb
         }
 
         public JsonSerializerOptions JsonSerializerOptions { get; set; }
+
+        public IJsonCollectionAdapter CollectionAdapter { get; set; }
     }
 }

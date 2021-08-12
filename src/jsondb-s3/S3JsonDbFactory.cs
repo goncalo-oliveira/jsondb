@@ -24,7 +24,10 @@ namespace JsonDb.S3
         public IJsonDb GetJsonDb()
         {
             return new S3JsonDb( new AmazonS3Client( credentials, s3Config )
-                , options.BucketName, options.DbPath, options.JsonSerializerOptions );
+                , options.BucketName
+                , options.DbPath
+                , options.CollectionAdapter
+                , options.JsonSerializerOptions );
         }
     }
 }

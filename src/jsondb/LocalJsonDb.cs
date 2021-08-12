@@ -2,17 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using JsonDb.Adapters;
 
 namespace JsonDb.Local
 {
     internal class LocalJsonDb : IJsonDb
     {
         private readonly string dbPath;
+        private readonly IJsonCollectionAdapter collectionAdapter;
         private readonly JsonSerializerOptions serializerOptions;
 
-        public LocalJsonDb( string path, JsonSerializerOptions jsonSerializerOptions = null )
+        public LocalJsonDb( string path, IJsonCollectionAdapter jsonCollectionAdapter, JsonSerializerOptions jsonSerializerOptions )
         {
             if ( Path.IsPathRooted( path ) )
             {
@@ -28,6 +31,7 @@ namespace JsonDb.Local
                 throw new DirectoryNotFoundException();
             }
 
+            collectionAdapter = jsonCollectionAdapter;
             serializerOptions = jsonSerializerOptions;
         }
 
@@ -41,14 +45,22 @@ namespace JsonDb.Local
                     .Close();
             }
 
-            var json = await File.ReadAllTextAsync( filepath );
+            var utf8Buffer = await File.ReadAllBytesAsync( filepath );
 
-            var collection = new LocalJsonCollection<T>( filepath, serializerOptions );
+            var collection = new LocalJsonCollection<T>( filepath, collectionAdapter, serializerOptions );
 
-            if ( string.IsNullOrEmpty( json ) )
+            if ( !( utf8Buffer?.Any() == true ) )
             {
                 return ( collection );
             }
+
+            // read through adapter
+            if ( collectionAdapter != null )
+            {
+                utf8Buffer = await collectionAdapter.ReadAsync( utf8Buffer );
+            }
+
+            var json = Encoding.UTF8.GetString( utf8Buffer );
 
             var items = JsonSerializer.Deserialize<IEnumerable<T>>( json, serializerOptions );
 

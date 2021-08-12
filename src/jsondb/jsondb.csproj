@@ -5,7 +5,7 @@
     <RootNamespace>JsonDb</RootNamespace>
     <AssemblyName>jsondb</AssemblyName>
     <PackageId>JsonDb</PackageId>
-    <Version>0.3</Version>
+    <Version>0.4</Version>
     <Authors>Goncalo Oliveira</Authors>
     <Description>A small JSON database</Description>
     <RepositoryUrl>https://github.com/goncalo-oliveira/jsondb</RepositoryUrl>
@@ -13,8 +13,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JsonDb.Core" Version="0.3.0" />
+    <!-- <PackageReference Include="JsonDb.Core" Version="0.3.0" /> -->
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\jsondb-core\jsondb-core.csproj" />
   </ItemGroup>
 
 </Project>
