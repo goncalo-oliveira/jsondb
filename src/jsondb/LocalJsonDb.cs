@@ -11,6 +11,7 @@ namespace JsonDb.Local
 {
     internal class LocalJsonDb : IJsonDb
     {
+        private readonly Encoding encoding = new UTF8Encoding( false );
         private readonly string dbPath;
         private readonly IJsonCollectionAdapter collectionAdapter;
         private readonly JsonSerializerOptions serializerOptions;
@@ -60,7 +61,7 @@ namespace JsonDb.Local
                 utf8Buffer = await collectionAdapter.ReadAsync( utf8Buffer );
             }
 
-            var json = Encoding.UTF8.GetString( utf8Buffer );
+            var json = encoding.GetString( utf8Buffer );
 
             var items = JsonSerializer.Deserialize<IEnumerable<T>>( json, serializerOptions );
 

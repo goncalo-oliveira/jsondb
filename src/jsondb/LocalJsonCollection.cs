@@ -10,6 +10,7 @@ namespace JsonDb.Local
 {
     internal class LocalJsonCollection<T> : InMemoryJsonCollection<T>
     {
+        private readonly Encoding encoding = new UTF8Encoding( false );
         private readonly string filePath;
         private readonly IJsonCollectionAdapter collectionAdapter;
         private readonly JsonSerializerOptions serializerOptions;
@@ -26,7 +27,7 @@ namespace JsonDb.Local
         protected override async Task WriteAsync( IEnumerable<T> items )
         {
             var json = JsonSerializer.Serialize( items, serializerOptions );
-            var utf8Buffer = Encoding.UTF8.GetBytes( json );
+            var utf8Buffer = encoding.GetBytes( json );
 
             // write through adapter
             if ( collectionAdapter != null )
